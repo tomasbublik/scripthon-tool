@@ -1,0 +1,46 @@
+[2012-04-09]
+
+-   po průchodu tokenů třídou SyntaxCreator se vytvoří rekurzivní struktura StatementBlock, ta buď obsahuje další StatementBlocky nebo TokenStatementy, což jsou jednotlivé sekvence tokenů
+-   bylo by potřeba jí opět nějak šikovně rekurzivně projít a detekovat jednotlivé struktury:
+    -   například pokud dojde k IfStatementu, vytvoří se v třídě TokenIfStatement něm struktura první statement block (if) a druhý statement block (else)
+        a bude mít návratový typ new IfStatement, který vytvoří metoda createStatement ze struktur, které má
+    -   podobně se vytvoří jiné struktury a navzájem se budou rekurzivně volat
+
+------------------------- DONE ---------------------------------------
+[2012-05-15]
+-   implementovat: logback, exceptions
+-   dodělat všechny struktury
+-   dodělat rozbor jednotlivých statementů (for cyklus apod...)
+
+----------------------------------------------------------------------
+[2013-04-10]
+-   vznikne nějaký heap pro proměnné - bude mít v sobě hash (název, hodnoty) a hodnoty bude další hash, který bude
+typu <nazev, hodnota>, to aby, se tam uložila správná data už bude předem během kompilace kontrolovat překladač
+-   do tohoto zásobníku se budou ukládat data během matching procesu: narazí se na přiřazení a hned se tam překopírují všechny známé informace
+ o struktuře a pokud došlo k matchingu, tak se tam dá i nějaká ta hodnota z Node, na kterou by se pak dalo dotazovat
+ a pak až bude potřeba vyhodnocení, může se dynamicky sestavit expression s hodnotami z heapu a zavolat něco jako evaluate
+
+
+[2013-04-13]
+-   pokud je po Any() if statement - je nutné udělat findFirstMatch modifikaci tak, aby se evaluoval i ten if
+
+[2013-04-21]
+-   udělat opakující se výsledky i pro Any() a také nějak nefunguje vyhledávání dvo Init (Scripthon), pokud je to zanořené
+v nějaké metodě
+
+[2013-04-25]
+-   je možné dokonce kompilovat pouze v paměti. Více o novém compiler API: http://www.oraclejavamagazine-digital.com/javamagazine_open/20130304#pg45
+
+
+[2013-04-25]
+-   pokud se napíše něco jako tohle: Block(Order=false), zcela se změní hledání v dané struktuře (časem by to nemuselo být jen u Block())
+    podstruktury nebudou moct obsahovat Any() a nebude vůbec záležet na jejich pořadí, vlastně se bude jen hledat, zda je zdroják Javy obsahuje,
+    takže singleton se bude moct odhalit takto:
+
+    Class() class
+    	Block(Order=false)
+    		Meth(Name=class.Name;Rest=private)
+    		MethCall(Ret=class.Name;Rest=[public,static])
+
+    z toho je vidět, že v tom bloku sice může být cokoliv, ale musí to obsahovat obe struktury (Meth a MethCall) a to
+    v jakémkoliv pořadí

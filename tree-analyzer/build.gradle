@@ -1,0 +1,7 @@
+version = rootProject.version
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile "org.slf4j:slf4j-api:1.7.2"
+}

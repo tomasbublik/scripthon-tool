@@ -1,0 +1,4 @@
+Class(Name="myClass")
+    Block(Lines=4)
+        Statement()
+Any()

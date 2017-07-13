@@ -1,0 +1,10 @@
+# Created by .gitignore support plugin (hsz.mobi)
+.idea
+atlassian-ide-plugin.xml
+build
+/scripthon-compiler.iml
+/gradle.properties
+/logFile.log
+/out/
+/.gradle/
+/build/

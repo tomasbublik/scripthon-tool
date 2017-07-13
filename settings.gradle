@@ -1,0 +1,1 @@
+include ':scripthon-tool', ':scripthon-compiler', ':tree-analyzer', ':tree-matcher'

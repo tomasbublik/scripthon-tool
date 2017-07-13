@@ -1,0 +1,8 @@
+Class(Name="myClass") c
+    Init(Type="Long";Value=3)
+    Meth()
+    Meth(Name="newMethod")
+        Block()
+            MethCall(Name="System.out.println")
+            Any()
+            MethCall()

@@ -1,0 +1,5 @@
+Class(Order=false) a
+    Any()
+    Meth(Name=a.Name;Rest=private)
+    Any()
+    Meth(Rest=[public,static];Ret=a.Name)

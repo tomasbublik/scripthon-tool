@@ -1,0 +1,8 @@
+Class(Name="MyClass";Rest=public)
+    Meth(Name="newMethod";Rest=public) a
+    if (a.Name == "newMethod")
+        Init(Name="var")
+        Init(Name="variable")
+    else
+        Init(Name="var2")
+    Init(Name="variable2")
