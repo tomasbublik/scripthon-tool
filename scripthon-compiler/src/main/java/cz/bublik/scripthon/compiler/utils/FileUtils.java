@@ -31,7 +31,7 @@ public final class FileUtils {
         return new ArrayList<>();
     }
 
-    private static List<String> readFileFromPath(Path path) {
+    public static List<String> readFileFromPath(Path path) {
         try {
             return Files.readAllLines(path, Charset.defaultCharset());
         } catch (IOException e) {

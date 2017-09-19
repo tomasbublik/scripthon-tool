@@ -17,7 +17,7 @@ public class TokenizerTest extends CompilerTest {
 
     @Test
     public void testTokenizerSequence2() {
-        List<String> fileLinesList = FileUtils.readFile("../scripthon-compiler/scripthonSources/test-file2.scripthon");
+        List<String> fileLinesList = FileUtils.readFile(TokenizerTest.class.getResource("/scripthonSources/test-file2.scripthon"));
         StringBuilder sb = new StringBuilder();
         TokenSequence tokenSequence = null;
         if (fileLinesList != null && !fileLinesList.isEmpty()) {

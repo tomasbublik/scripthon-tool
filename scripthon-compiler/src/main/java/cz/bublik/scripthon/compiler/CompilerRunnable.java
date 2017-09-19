@@ -10,7 +10,6 @@ import cz.bublik.scripthon.compiler.syntax.parser.StatementsRecognizer;
 import cz.bublik.scripthon.compiler.syntax.parser.SyntaxCreator;
 import cz.bublik.scripthon.compiler.syntax.parser.pojos.StatementsBlock;
 import cz.bublik.scripthon.compiler.syntax.statements.Program;
-import cz.bublik.scripthon.compiler.utils.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,23 +17,12 @@ import java.util.List;
 
 public class CompilerRunnable implements Runnable {
 
-    static final Logger LOG = LoggerFactory.getLogger(CompilerRunnable.class);
-
-    private String argument;
+    private static final Logger LOG = LoggerFactory.getLogger(CompilerRunnable.class);
 
     private List<String> linesList;
 
-    public CompilerRunnable(String argument) {
-        this.argument = argument;
-    }
-
     public CompilerRunnable(List<String> linesList) {
         this.linesList = linesList;
-    }
-
-    public static void main(String[] args) {
-        CompilerRunnable compilerRunnable = new CompilerRunnable(args[0]);
-        compilerRunnable.compile();
     }
 
     private static void p(Object line) {
@@ -58,14 +46,11 @@ public class CompilerRunnable implements Runnable {
         TokenSequence tokenSequence = null;
         List<String> fileLinesList = null;
         String tokensPrinted = "";
-        if (argument != null && !argument.isEmpty()) {
-            fileLinesList = FileUtils.readFile(argument);
+
+        if (linesList != null && !linesList.isEmpty()) {
+            fileLinesList = linesList;
         } else {
-            if (linesList != null && !linesList.isEmpty()) {
-                fileLinesList = linesList;
-            } else {
-                throw new RuntimeException("Sources empty exception");
-            }
+            throw new RuntimeException("Sources empty exception");
         }
         if (fileLinesList != null && !fileLinesList.isEmpty()) {
             p();
@@ -97,5 +82,9 @@ public class CompilerRunnable implements Runnable {
         Interpreter interpreter = new Interpreter(0);
         program1.accept(interpreter);
         programContainer.setProgram(program1);
+    }
+
+    public List<String> getLinesList() {
+        return linesList;
     }
 }

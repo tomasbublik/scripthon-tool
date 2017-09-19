@@ -17,7 +17,7 @@ public abstract class CompilerTest {
     @Before
     public void setUp() {
         interpreter = new Interpreter(default_value);
-        fileLinesList = FileUtils.readFile("../scripthon-compiler/scripthonSources/test-file.scripthon");
+        fileLinesList = FileUtils.readFile(CompilerTest.class.getResource("/scripthonSources/test-file.scripthon"));
     }
 
 }
