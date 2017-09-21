@@ -30,10 +30,10 @@
         <appender-ref ref="FILE"/>
     </root>-->
 
-    <logger name="cz.bublik" level="DEBUG">
+    <logger name="cz.ctu" level="DEBUG">
     <appender-ref ref="STDOUT" />
     </logger>
-    <logger name="cz.bublik" level="DEBUG">
+    <logger name="cz.ctu" level="DEBUG">
     <appender-ref ref="FILE" />
     </logger>
 </configuration>

@@ -23,7 +23,7 @@ allprojects {
 apply plugin: 'idea'
 }
 
-group 'cz.bublik.scripthon'
+group 'cz.ctu.scripthon'
 version '0.1.2'
 
 subprojects {

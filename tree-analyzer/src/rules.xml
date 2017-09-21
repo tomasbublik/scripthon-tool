@@ -8,7 +8,7 @@
 -->
 <rules>
     <rule ruleName="MaxParamsForMethod"
-          ruleClass="cz.bublik.scripthon.tree.analyzer.codeanalyzer.javacode.rule.MaxParamsForMethod"/>
+          ruleClass="cz.ctu.scripthon.tree.analyzer.codeanalyzer.javacode.rule.MaxParamsForMethod"/>
     <rule ruleName="OverrideEqualsHashCode"
-          ruleClass="cz.bublik.scripthon.tree.analyzer.codeanalyzer.javacode.rule.OverrideEqualsHashCode"/>
+          ruleClass="cz.ctu.scripthon.tree.analyzer.codeanalyzer.javacode.rule.OverrideEqualsHashCode"/>
 </rules>		
