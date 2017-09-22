@@ -8,3 +8,8 @@ build
 /.gradle/
 /build/
 scripthon-tool.iml
+/scripthon-tool/logFile.log
+/tree-analyzer/out/
+/tree-matcher/out/
+/scripthon-tool/out/
+/scripthon-compiler/out/

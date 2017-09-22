@@ -46,7 +46,7 @@ public class MainMatcherNew {
         memory = Memory.createMemory();
         evaluator = new Evaluator(memory);
         int doneNumber = 0;
-
+        
         for (Map.Entry<String, Node> javaSourceNodeEntry : classTrees.entrySet()) {
             doneNumber = updateProgressBar(classTrees, jProgressBar, notificationField, doneNumber, javaSourceNodeEntry);
 

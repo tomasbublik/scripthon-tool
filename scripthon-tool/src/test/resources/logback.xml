@@ -31,9 +31,11 @@
     </root>-->
 
     <logger name="cz.ctu" level="DEBUG">
+        <level value="OFF"/>
         <appender-ref ref="STDOUT"/>
     </logger>
     <logger name="cz.ctu" level="DEBUG">
+        <level value="OFF"/>
         <appender-ref ref="FILE"/>
     </logger>
 </configuration>

@@ -4,6 +4,7 @@ import cz.ctu.scripthon.compiler.pojo.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TokenSequence {
@@ -14,6 +15,10 @@ public class TokenSequence {
 
     public TokenSequence(List<Token> tokenList) {
         this.tokenList = tokenList;
+    }
+
+    public TokenSequence() {
+        tokenList = new ArrayList<>();
     }
 
     public String printTokensVertically() {

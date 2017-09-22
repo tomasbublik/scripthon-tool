@@ -4,7 +4,6 @@ import cz.ctu.scripthon.tree.analyzer.exception.DoNotFitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -76,53 +75,6 @@ public class AccessHelper {
     }
 
     public static Map<String, Node> getClassTrees() {
-        return classTrees;
-    }
-
-    public static void serializeClassTree() {
-        long startTime = System.currentTimeMillis();
-        FileOutputStream fileOut = null;
-        ObjectOutputStream out = null;
-        try {
-            fileOut = new FileOutputStream("classestree.ser");
-            out = new ObjectOutputStream(fileOut);
-            out.writeObject(classTrees);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            out.close();
-            fileOut.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        long finalTime = System.currentTimeMillis() - startTime;
-        LOG.debug("Completed serialization in: " + finalTime + " ms");
-    }
-
-    public static Map<String, Node> deserializeClassTree() {
-        long startTime = System.currentTimeMillis();
-        FileInputStream fileIn = null;
-        ObjectInputStream in = null;
-        try {
-            fileIn = new FileInputStream("classestree.ser");
-            in = new ObjectInputStream(fileIn);
-            classTrees = (Map<String, Node>) in.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            in.close();
-            fileIn.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        long finalTime = System.currentTimeMillis() - startTime;
-        LOG.debug("Classes were deserialized in: " + finalTime + " ms");
         return classTrees;
     }
 

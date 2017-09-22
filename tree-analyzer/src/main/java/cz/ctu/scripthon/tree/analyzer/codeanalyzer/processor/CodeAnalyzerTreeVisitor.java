@@ -55,11 +55,8 @@ public class CodeAnalyzerTreeVisitor extends TreePathScanner<Object, Trees> {
     public Object visitClass(ClassTree classTree, Trees trees) {
         AccessHelper.addNumberOfClasses();
         TreePath path = getCurrentPath();
-        JCTree.JCClassDecl innerClassTree = (JCTree.JCClassDecl) classTree;
-        if (innerClassTree.getSimpleName() == null || innerClassTree.getSimpleName().length() == 0) {
-            LOG.debug("This is inner class - not supported, exiting to next structure");
-            return null;
-        }
+        //Inner classes are not supported yet
+        if (isInnerClass((JCTree.JCClassDecl) classTree)) return null;
         clazzInfo = new JavaClassInfo();
         //populate required class information to model
         ClassInfoDataSetter.populateClassInfo(clazzInfo, classTree, path, trees);
@@ -111,6 +108,15 @@ public class CodeAnalyzerTreeVisitor extends TreePathScanner<Object, Trees> {
         }
         //accessHelper.setDone();
         return object;
+    }
+
+    private boolean isInnerClass(JCTree.JCClassDecl classTree) {
+        JCTree.JCClassDecl innerClassTree = classTree;
+        if (innerClassTree.getSimpleName() == null || innerClassTree.getSimpleName().length() == 0) {
+            LOG.debug("This is inner class - not supported, exiting to next structure");
+            return true;
+        }
+        return false;
     }
 
     /**

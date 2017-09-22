@@ -63,7 +63,7 @@ public class Performer {
         long matchingStartTime = System.currentTimeMillis();
         LOG.debug("Starting matching system");
 
-        Result matchingResult = null;
+        Result matchingResult = new Result("No results found");
 
         try {
             if (program != null) {

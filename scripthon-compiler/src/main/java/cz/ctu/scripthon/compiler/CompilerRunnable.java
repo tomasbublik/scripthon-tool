@@ -43,8 +43,8 @@ public class CompilerRunnable implements Runnable {
     }
 
     private void compile() throws EmptySourceException, SyntaxException {
-        TokenSequence tokenSequence = null;
-        List<String> fileLinesList = null;
+        TokenSequence tokenSequence = new TokenSequence();
+        List<String> fileLinesList;
         String tokensPrinted = "";
 
         if (linesList != null && !linesList.isEmpty()) {

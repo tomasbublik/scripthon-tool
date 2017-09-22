@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
+
 buildscript {
     repositories {
         jcenter()
@@ -20,18 +21,34 @@ allprojects {
     }
 
     apply plugin: 'java'
-apply plugin: 'idea'
+    apply plugin: 'idea'
+    apply plugin: 'jacoco'
 }
 
 group 'cz.ctu.scripthon'
-version '0.1.2'
+version '0.2.2'
 
 subprojects {
     tasks.withType(JavaCompile) {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+
+    jacoco {
+        toolVersion = "0.7.9"
+        reportsDir = file("$buildDir/customJacocoReportDir")
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled false
+            csv.enabled false
+            html.destination file("${buildDir}/jacocoHtml")
+        }
+    }
+    
     dependencies {
+        compile fileTree(include: ['*.jar'], dir: 'libs')
     }
 }
 
@@ -49,4 +66,17 @@ dependencies {
 
     testCompile "junit:junit:4.11"
     testCompile "org.assertj:assertj-core:1.7.1"
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }

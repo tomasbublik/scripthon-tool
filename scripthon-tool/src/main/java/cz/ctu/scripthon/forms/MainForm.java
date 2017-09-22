@@ -22,7 +22,6 @@ public class MainForm {
 
     static final Logger LOG = LoggerFactory.getLogger(MainForm.class);
 
-
     private JPanel mainPanel;
     private JTextArea scripthonInputArea;
     private JavaSourcesField javaSourcesField;
@@ -155,12 +154,10 @@ public class MainForm {
     private File openDirectory(JFrame jFrame) {
         File file = null;
         //Create a file chooser
-        JFileChooser jFileChooser = null;
+        JFileChooser jFileChooser = new JFileChooser();
         final File javaSourcesFile = Main.getApplicationContext().getJavaSourcesFile();
         if (javaSourcesFile != null) {
             jFileChooser = new JFileChooser(javaSourcesFile);
-        } else {
-            new JFileChooser();
         }
 
         jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -400,7 +397,7 @@ public class MainForm {
         }
     }
 
-    class CallbackTask implements Runnable {
+    static class CallbackTask implements Runnable {
 
         private final Runnable task;
 

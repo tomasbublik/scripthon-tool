@@ -26,13 +26,12 @@ public class AnalyzerRunnable implements Runnable {
                 LOG.debug("Please provide the java source file(s) " + "to be verified as argument");
                 LOG.debug("Usage: java Main {<comma separated list of source files>}");
                 LOG.debug("Exiting from the program");
-                System.exit(0);
             } else {
                 CodeAnalyzerController controller = new CodeAnalyzerController();
                 controller.invokeProcessor(argument, dependenciesFolder);
             }
-        } catch (Exception t) {
-            t.printStackTrace();
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
         }
         long estimatedTime = System.currentTimeMillis() - startTime;
         LOG.info("Analyzing process finished in:" + estimatedTime + " ms");

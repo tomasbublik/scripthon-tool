@@ -34,8 +34,8 @@ public class Main {
                 CodeAnalyzerController controller = new CodeAnalyzerController();
                 controller.invokeProcessor(args[0], "");
             }
-        } catch (Exception t) {
-            t.printStackTrace();
+        } catch (Exception e) {
+            LOG.error("Exception occurred: " + e.getMessage());
         }
     }
 }
