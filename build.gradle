@@ -39,17 +39,36 @@ subprojects {
         reportsDir = file("$buildDir/customJacocoReportDir")
     }
 
-    jacocoTestReport {
+    /*jacocoTestReport {
         reports {
             xml.enabled false
             csv.enabled false
             html.destination file("${buildDir}/jacocoHtml")
         }
-    }
+    }*/
     
     dependencies {
         compile fileTree(include: ['*.jar'], dir: 'libs')
     }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+codeCoverageReport.dependsOn {
+    subprojects*.test
 }
 
 idea {

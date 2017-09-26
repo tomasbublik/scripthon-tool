@@ -23,8 +23,9 @@ public class PerformerTests {
             e.printStackTrace();
         }*/
         applicationContext = new ApplicationContext();
-        File file = new File("..\\testSources\\test");
-        applicationContext.setJavaSourcesFile(file);
+        final String filePath = getClass().getResource("/testSources/test").getPath();
+        //File file = new File("..\\testSources\\test");
+        applicationContext.setJavaSourcesFile(new File(filePath));
     }
 
     @Test
